@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Fade-in animation
+  // Scroll animation
   const elements = document.querySelectorAll(".card, section");
 
   const reveal = () => {
@@ -30,5 +30,59 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", reveal);
   reveal();
+
+  // Scroll Progress Bar
+  const bar = document.createElement("div");
+  bar.style.position = "fixed";
+  bar.style.top = "0";
+  bar.style.left = "0";
+  bar.style.height = "4px";
+  bar.style.background = "#5865F2";
+  bar.style.zIndex = "999";
+  document.body.appendChild(bar);
+
+  window.addEventListener("scroll", () => {
+    const scroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    bar.style.width = (scroll / height) * 100 + "%";
+  });
+
+  // Particle Background
+  const canvas = document.getElementById("particles");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particles = [];
+
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2,
+      speedX: Math.random() * 1 - 0.5,
+      speedY: Math.random() * 1 - 0.5
+    });
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
+      p.x += p.speedX;
+      p.y += p.speedY;
+
+      ctx.fillStyle = "#5865F2";
+      ctx.fillRect(p.x, p.y, p.size, p.size);
+
+      if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+    });
+
+    requestAnimationFrame(animateParticles);
+  }
+
+  animateParticles();
 
 });
