@@ -51,8 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("particles");
   const ctx = canvas.getContext("2d");
 
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
 
   let particles = [];
 
@@ -74,7 +79,11 @@ document.addEventListener("DOMContentLoaded", () => {
       p.y += p.speedY;
 
       ctx.fillStyle = "#5865F2";
-      ctx.fillRect(p.x, p.y, p.size, p.size);
+
+      // smoother circle particles
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
 
       if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
       if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
