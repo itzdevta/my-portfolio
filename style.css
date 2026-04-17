@@ -124,3 +124,6 @@ footer {
   height: 100%;
   z-index: -1;
 }
+canvas {
+  pointer-events: none;
+}
