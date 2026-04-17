@@ -6,52 +6,62 @@
 }
 
 body {
-  background: #0a0a0a;
+  background: linear-gradient(-45deg, #0a0a0a, #1a1a2e, #16213e, #0a0a0a);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
   color: white;
+}
+
+/* Background animation */
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 /* Navbar */
 nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 20px 50px;
-  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
 }
 
 /* Buttons */
-.nav-btn, .btn {
-  background: #5865F2;
-  padding: 10px 18px;
-  border-radius: 6px;
-  text-decoration: none;
+.btn, .nav-btn {
+  background: rgba(88,101,242,0.2);
+  border: 1px solid #5865F2;
+  padding: 10px 20px;
+  border-radius: 8px;
   color: white;
+  text-decoration: none;
   transition: 0.3s;
 }
 
-.nav-btn:hover, .btn:hover {
-  box-shadow: 0 0 20px #5865F2;
+.btn:hover, .nav-btn:hover {
+  background: #5865F2;
+  box-shadow: 0 0 25px #5865F2;
 }
 
-/* Hero Section */
+/* Hero */
 header {
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #5865F2, #000);
+  backdrop-filter: blur(20px);
   text-align: center;
 }
 
 header h1 {
-  font-size: 50px;
-  margin-bottom: 10px;
+  font-size: 55px;
+  text-shadow: 0 0 20px #5865F2;
 }
 
 header p {
   opacity: 0.8;
+  margin-top: 10px;
 }
 
 /* Sections */
@@ -60,7 +70,7 @@ section {
   text-align: center;
 }
 
-/* Grid Layout */
+/* Glass Cards */
 .grid {
   display: flex;
   justify-content: center;
@@ -69,34 +79,39 @@ section {
   margin-top: 30px;
 }
 
-/* Cards */
 .card {
-  background: #111;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
   padding: 25px;
-  width: 220px;
-  border-radius: 12px;
+  width: 230px;
+  border-radius: 15px;
   transition: 0.4s;
-  cursor: pointer;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 25px #5865F2;
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 30px #5865F2;
 }
 
-/* Contact Section (FIXED + CLEAN) */
+/* Contact Card */
 #contact {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+}
+
+#contact p {
+  background: rgba(255,255,255,0.05);
+  padding: 10px 20px;
+  border-radius: 8px;
 }
 
 /* Footer */
 footer {
   padding: 20px;
-  background: #111;
-  text-align: center;
+  backdrop-filter: blur(10px);
   font-size: 14px;
   opacity: 0.7;
 }
