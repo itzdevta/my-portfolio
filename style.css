@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
 }
 
 body {
@@ -14,20 +14,27 @@ body {
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 50px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
 }
 
-.nav-btn {
+/* Buttons */
+.nav-btn, .btn {
   background: #5865F2;
-  padding: 8px 15px;
-  border-radius: 5px;
+  padding: 10px 18px;
+  border-radius: 6px;
   text-decoration: none;
   color: white;
+  transition: 0.3s;
 }
 
-/* Hero */
+.nav-btn:hover, .btn:hover {
+  box-shadow: 0 0 20px #5865F2;
+}
+
+/* Hero Section */
 header {
   height: 90vh;
   display: flex;
@@ -40,20 +47,11 @@ header {
 
 header h1 {
   font-size: 50px;
+  margin-bottom: 10px;
 }
 
-.btn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  background: #5865F2;
-  border-radius: 6px;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  box-shadow: 0 0 20px #5865F2;
+header p {
+  opacity: 0.8;
 }
 
 /* Sections */
@@ -62,7 +60,7 @@ section {
   text-align: center;
 }
 
-/* Cards */
+/* Grid Layout */
 .grid {
   display: flex;
   justify-content: center;
@@ -71,6 +69,7 @@ section {
   margin-top: 30px;
 }
 
+/* Cards */
 .card {
   background: #111;
   padding: 25px;
@@ -85,18 +84,19 @@ section {
   box-shadow: 0 0 25px #5865F2;
 }
 
+/* Contact Section (FIXED + CLEAN) */
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
 /* Footer */
 footer {
   padding: 20px;
   background: #111;
   text-align: center;
-}
-#contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#contact .btn {
-  margin-top: 15px;
+  font-size: 14px;
+  opacity: 0.7;
 }
